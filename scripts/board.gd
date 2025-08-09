@@ -16,7 +16,7 @@ var midpoint: float = 0
 
 func make_buckets(game_width: int, game_height: int) -> void:
 
-	var seperator_y:int = int(game_height * 0.75)
+	var seperator_y:int = int(game_height * 0.6)
 	#warning-ignore:integer_division
 	var bucket_width:int = int(game_width / buckets)
 	for bucket in (buckets - 1):

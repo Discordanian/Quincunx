@@ -13,12 +13,12 @@ size = Vector2(10, 1352)
 
 [node name="Board" type="Node2D"]
 script = ExtResource("1_bw3vb")
-num_of_pins_per_row = 14
-num_of_pin_rows = 7
-distance_between_rows = 70
-seconds_per_ball = 1.0
-buckets = 13
-ball_count = 120
+num_of_pins_per_row = 17
+num_of_pin_rows = 15
+distance_between_rows = 40
+seconds_per_ball = 1.4
+buckets = 15
+ball_count = 65
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -28,6 +28,7 @@ offset_right = 810.0
 offset_bottom = 1365.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.941176, 0.941176, 0.941176, 1)
 
 [node name="Floor" type="StaticBody2D" parent="."]
 visible = false

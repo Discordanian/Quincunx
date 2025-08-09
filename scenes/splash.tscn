@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://das3imuq6ndw4"]
+
+[ext_resource type="Texture2D" uid="uid://c03kl021x5eqy" path="res://Assets/Images/Tangential Cold Studios Transparent Background.png" id="1_86pdq"]
+[ext_resource type="FontFile" uid="uid://cdfdoa7gpkdkq" path="res://fonts/Harabara.ttf" id="2_10vqf"]
+
+[sub_resource type="Theme" id="Theme_4rrho"]
+default_font = ExtResource("2_10vqf")
+default_font_size = 100
+
+[node name="Splash" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 4
+
+[node name="TangentialColdStudiosTransparentBackground" type="Sprite2D" parent="TextureRect"]
+position = Vector2(358, 211.5)
+scale = Vector2(0.75, 0.758929)
+texture = ExtResource("1_86pdq")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -11.5
+offset_right = 37.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_4rrho")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_10vqf")
+text = "Q u i n c u n x"
