@@ -6,6 +6,8 @@ var ball_scene = preload("res://scenes/ball.tscn")
 const num_of_pins_per_row: int = 15
 const num_of_pin_rows: int = 5
 @export var distance_between_rows: int
+@export var balls_per_second: int
+var total_delta: float = 0.0
 
 
 func create_pin_board() -> void:
@@ -31,14 +33,35 @@ func _ready() -> void:
 
 	create_pin_board()
 	
-	var ball1 = ball_scene.instantiate()
-	ball1.position = Vector2(100, 100)
-	add_child(ball1)
-	var ball2 = ball_scene.instantiate()
-	ball2.position = Vector2(400, -100)
-	add_child(ball2)
+	var timer = Timer.new()
+	add_child(timer)
+	timer.wait_time = 1.0
+	timer.autostart = true
+	timer.connect("timeout", drop_ball)
+	
+	drop_ball()
+	
+	#var ball1 = ball_scene.instantiate()
+	#ball1.position = Vector2(100, 100)
+	#add_child(ball1)
+	#var ball2 = ball_scene.instantiate()
+	#ball2.position = Vector2(400, -100)
+	#add_child(ball2)
 
+
+func drop_ball() -> void:
+	print("drop ball called")
+	var ball = ball_scene.instantiate()
+	var bally:int = -50
+	
+	var ballx = randi() % (350 - 250 + 1) + 250
+	ball.position = Vector2(ballx, bally)
+	add_child(ball)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	total_delta += delta
+	print(total_delta)
+	if total_delta > 1:
+		total_delta = 0.0
+		drop_ball() 
