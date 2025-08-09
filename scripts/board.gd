@@ -2,18 +2,35 @@ extends Node2D
 
 var pin_scene = preload("res://scenes/pin.tscn")
 var ball_scene = preload("res://scenes/ball.tscn")
+var seperator_scene = preload("res://scenes/seperator.tscn")
 
-const num_of_pins_per_row: int = 15
-const num_of_pin_rows: int = 5
+@export var num_of_pins_per_row: int = 15
+@export var num_of_pin_rows: int = 5
 @export var distance_between_rows: int
-@export var balls_per_second: int
+@export var seconds_per_ball: float
 var total_delta: float = 0.0
+@export var buckets: int
+var midpoint: int = 0
+@export var ball_count = 100
 
 
-func create_pin_board() -> void:
-	var viewport_size = get_viewport().size
+func make_buckets(game_width: int, game_height: int) -> void:
 
-	var distance_between_pins: int = viewport_size.x / num_of_pins_per_row
+	var seperator_y:int = game_height * 0.75
+	var bucket_width = game_width / buckets 
+	for bucket in (buckets - 1):
+		var seperator = seperator_scene.instantiate()
+		seperator.position = Vector2((bucket + 1) * bucket_width, seperator_y)
+		add_child(seperator)
+	
+	
+	
+
+
+func create_pin_board(game_width: int) -> void:
+	# var viewport_size = get_viewport().size
+
+	var distance_between_pins: int = game_width / num_of_pins_per_row
 	var pinx_offset: int = 0
 	for row in num_of_pin_rows:
 		if row % 2 == 0:
@@ -30,32 +47,32 @@ func create_pin_board() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-
-	create_pin_board()
+	var viewport_size = get_viewport().size
+	midpoint = viewport_size.x/2
 	
-	var timer = Timer.new()
-	add_child(timer)
-	timer.wait_time = 1.0
-	timer.autostart = true
-	timer.connect("timeout", drop_ball)
+	create_pin_board(viewport_size.x)
+	
+	make_buckets(viewport_size.x, viewport_size.y)
 	
 	drop_ball()
 	
 
 
 func drop_ball() -> void:
-	print("drop ball called")
+	# print("drop ball called")
 	var ball = ball_scene.instantiate()
 	var bally:int = -50
 	
-	var ballx = randi() % (350 - 250 + 1) + 250
+	var ballx:int = midpoint + ((randi() % 10) - 5) +1
 	ball.position = Vector2(ballx, bally)
 	add_child(ball)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	total_delta += delta
-	print(total_delta)
-	if total_delta > 1:
-		total_delta = 0.0
-		drop_ball() 
+	if ball_count > 0 :
+		total_delta += delta
+		# print(total_delta)
+		if total_delta > seconds_per_ball:
+			total_delta = 0.0
+			ball_count += -1
+			drop_ball() 

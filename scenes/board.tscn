@@ -13,7 +13,11 @@ size = Vector2(10, 1352)
 
 [node name="Board" type="Node2D"]
 script = ExtResource("1_bw3vb")
-distance_between_rows = 50
+num_of_pins_per_row = 14
+num_of_pin_rows = 8
+distance_between_rows = 70
+seconds_per_ball = 1.0
+buckets = 13
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
