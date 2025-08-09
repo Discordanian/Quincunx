@@ -28,20 +28,34 @@ func make_buckets(game_width: int, game_height: int) -> void:
 func create_pin_board(game_width: int) -> void:
 
 	# Center the first row pins
-	var distance_between_pins: int = game_width / num_of_pins_per_row
-	var pinx_offset: int = 0
+	var distance_between_pins: float = game_width / num_of_pins_per_row
+	print("Distance between pins: ", distance_between_pins)
+	var pinx_offset: float = 0
 	for row in num_of_pin_rows:
 		if row % 2 == 0:
-			pinx_offset = distance_between_rows
+			pinx_offset = midpoint
 		else:
-			pinx_offset = int(distance_between_rows / 2)
-
+			pinx_offset = midpoint + distance_between_pins/2.0
+		
+		var piny: int = distance_between_rows * (4 + row)
+		var midpin = pin_scene.instantiate()
+		midpin.position = Vector2(pinx_offset, piny)
+		add_child(midpin)
+		print("Midpoint", pinx_offset)
+		# Start in the middle and work out.  Given that we need half the points
+		var half_pin_count:int = num_of_pins_per_row / 2
 		for x in num_of_pins_per_row:
-			var pinx: int = pinx_offset + (x * distance_between_pins)
-			var piny: int = distance_between_rows * (4 + row)
-			var pin = pin_scene.instantiate()
-			pin.position = Vector2(pinx, piny)
-			add_child(pin)
+			var x_delta: float = (x+1) * distance_between_pins
+			var pin_pos_x: float = pinx_offset + x_delta
+			var pin_neg_x: float = pinx_offset - x_delta
+			print(pin_pos_x)
+			print(pin_neg_x)
+			var pinA = pin_scene.instantiate()
+			var pinB = pin_scene.instantiate()
+			pinA.position = Vector2(pin_pos_x, piny)
+			add_child(pinA)
+			pinB.position = Vector2(pin_neg_x, piny)
+			add_child(pinB)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
