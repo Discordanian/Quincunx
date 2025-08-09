@@ -10,33 +10,31 @@ var seperator_scene = preload("res://scenes/seperator.tscn")
 @export var seconds_per_ball: float
 var total_delta: float = 0.0
 @export var buckets: int
-var midpoint: int = 0
+var midpoint: float = 0
 @export var ball_count = 100
 
 
 func make_buckets(game_width: int, game_height: int) -> void:
 
-	var seperator_y:int = game_height * 0.75
-	var bucket_width = game_width / buckets 
+	var seperator_y:int = int(game_height * 0.75)
+	#warning-ignore:integer_division
+	var bucket_width:int = int(game_width / buckets)
 	for bucket in (buckets - 1):
 		var seperator = seperator_scene.instantiate()
 		seperator.position = Vector2((bucket + 1) * bucket_width, seperator_y)
 		add_child(seperator)
-	
-	
-	
 
 
 func create_pin_board(game_width: int) -> void:
-	# var viewport_size = get_viewport().size
 
+	# Center the first row pins
 	var distance_between_pins: int = game_width / num_of_pins_per_row
 	var pinx_offset: int = 0
 	for row in num_of_pin_rows:
 		if row % 2 == 0:
 			pinx_offset = distance_between_rows
 		else:
-			pinx_offset = distance_between_rows / 2
+			pinx_offset = int(distance_between_rows / 2)
 
 		for x in num_of_pins_per_row:
 			var pinx: int = pinx_offset + (x * distance_between_pins)
@@ -48,14 +46,16 @@ func create_pin_board(game_width: int) -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var viewport_size = get_viewport().size
-	midpoint = viewport_size.x/2
+	midpoint = viewport_size.x/2.0
+	
+	# Seed random numbers
+	randomize()
 	
 	create_pin_board(viewport_size.x)
 	
 	make_buckets(viewport_size.x, viewport_size.y)
 	
 	drop_ball()
-	
 
 
 func drop_ball() -> void:
@@ -63,9 +63,11 @@ func drop_ball() -> void:
 	var ball = ball_scene.instantiate()
 	var bally:int = -50
 	
-	var ballx:int = midpoint + ((randi() % 10) - 5) +1
+	var fuzz : float = randf()/2.0 - 0.25
+	var ballx: float = midpoint + fuzz
 	ball.position = Vector2(ballx, bally)
 	add_child(ball)
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

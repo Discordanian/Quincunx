@@ -18,6 +18,7 @@ num_of_pin_rows = 8
 distance_between_rows = 70
 seconds_per_ball = 1.0
 buckets = 13
+ball_count = 150
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
