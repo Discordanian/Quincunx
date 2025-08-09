@@ -41,12 +41,6 @@ func _ready() -> void:
 	
 	drop_ball()
 	
-	#var ball1 = ball_scene.instantiate()
-	#ball1.position = Vector2(100, 100)
-	#add_child(ball1)
-	#var ball2 = ball_scene.instantiate()
-	#ball2.position = Vector2(400, -100)
-	#add_child(ball2)
 
 
 func drop_ball() -> void:
