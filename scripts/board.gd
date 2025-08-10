@@ -41,15 +41,13 @@ func create_pin_board(game_width: int) -> void:
 		var midpin = pin_scene.instantiate()
 		midpin.position = Vector2(pinx_offset, piny)
 		add_child(midpin)
-		print("Midpoint", pinx_offset)
+
 		# Start in the middle and work out.  Given that we need half the points
 		var half_pin_count:int = num_of_pins_per_row / 2
 		for x in num_of_pins_per_row:
 			var x_delta: float = (x+1) * distance_between_pins
 			var pin_pos_x: float = pinx_offset + x_delta
 			var pin_neg_x: float = pinx_offset - x_delta
-			print(pin_pos_x)
-			print(pin_neg_x)
 			var pinA = pin_scene.instantiate()
 			var pinB = pin_scene.instantiate()
 			pinA.position = Vector2(pin_pos_x, piny)

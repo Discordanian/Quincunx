@@ -11,7 +11,9 @@ config_version=5
 [application]
 
 config/name="Quincunx"
-run/main_scene="uid://dx57dsl0ssf2o"
+config/description="A Galton Board simulation"
+config/version="0.1"
+run/main_scene="uid://das3imuq6ndw4"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -26,3 +28,4 @@ window/handheld/orientation=1
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
