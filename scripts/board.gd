@@ -10,11 +10,16 @@ var seperator_scene = preload("res://scenes/seperator.tscn")
 @export var seconds_per_ball: float
 var total_delta: float = 0.0
 @export var buckets: int
-var midpoint: float = 0
+
 @export var ball_count = 100
 
+const game_width:int  = 720
+const game_height:int = 1280
 
-func make_buckets(game_width: int, game_height: int) -> void:
+const midpoint: float = game_width/2.0
+
+
+func make_buckets() -> void:
 
 	var seperator_y:int = int(game_height * 0.6)
 	#warning-ignore:integer_division
@@ -26,7 +31,7 @@ func make_buckets(game_width: int, game_height: int) -> void:
 
 
 func create_pin_board(game_width: int) -> void:
-
+	print("create_pin_board(", game_width, ")")
 	# Center the first row pins
 	var distance_between_pins: float = game_width / num_of_pins_per_row
 	print("Distance between pins: ", distance_between_pins)
@@ -57,17 +62,20 @@ func create_pin_board(game_width: int) -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var viewport_size = get_viewport().size
-	midpoint = viewport_size.x/2.0
+	
 	
 	# Seed random numbers
 	randomize()
 	
-	create_pin_board(viewport_size.x)
+	add_camera()
 	
-	make_buckets(viewport_size.x, viewport_size.y)
+	print("_ready create pin board")
+	create_pin_board(game_width)
+	
+	print("_ready make buckets")
+	make_buckets()
 	# drop_ball_test()
-	
+	print("_ready() drop ball")
 	drop_ball()
 
 func drop_ball_test() -> void:
@@ -91,6 +99,15 @@ func drop_ball() -> void:
 	ball.position = Vector2(ballx, bally)
 	add_child(ball)
 
+func add_camera() -> void:
+	var cam = Camera2D.new()
+	# cam.current = true
+	cam.position = Vector2(360,640) # Center of 720x1280
+	add_child(cam)
+	
+	var screen_size = get_viewport().size
+	var target_size = Vector2i(game_width, game_height)
+	cam.zoom = target_size/screen_size
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
