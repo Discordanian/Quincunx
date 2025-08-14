@@ -31,7 +31,6 @@ grow_vertical = 2
 color = Color(0.941176, 0.941176, 0.941176, 1)
 
 [node name="Floor" type="StaticBody2D" parent="."]
-visible = false
 position = Vector2(0, 1280)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
@@ -39,16 +38,17 @@ position = Vector2(365, 25)
 shape = SubResource("RectangleShape2D_psm7c")
 
 [node name="Left Wall" type="StaticBody2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Left Wall"]
 position = Vector2(-5, 676)
 shape = SubResource("RectangleShape2D_4mug4")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-visible = false
 position = Vector2(720, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(5, 666)
 shape = SubResource("RectangleShape2D_p0ybc")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0

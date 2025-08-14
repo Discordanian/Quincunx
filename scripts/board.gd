@@ -66,10 +66,21 @@ func _ready() -> void:
 	create_pin_board(viewport_size.x)
 	
 	make_buckets(viewport_size.x, viewport_size.y)
+	# drop_ball_test()
 	
 	drop_ball()
 
-
+func drop_ball_test() -> void:
+	# print("drop ball called")
+	var ball = ball_scene.instantiate()
+	var bally:int = -50
+	
+	var fuzz : float = randf()/2.0 + 0.25
+	var ballx: float = fuzz
+	ball.position = Vector2(ballx, bally)
+	add_child(ball)
+	
+	
 func drop_ball() -> void:
 	# print("drop ball called")
 	var ball = ball_scene.instantiate()
