@@ -3,7 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://djbw2ybs6bmml" path="res://Assets/Images/RainbowBall.png" id="1_7s4qf"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7s4qf"]
-bounce = 0.2
+friction = 0.43
+bounce = 0.3
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ig7tw"]
 radius = 13.0384
@@ -11,9 +12,9 @@ radius = 13.0384
 [node name="Ball" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_7s4qf")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ig7tw")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.04, 0.04)
 texture = ExtResource("1_7s4qf")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_ig7tw")

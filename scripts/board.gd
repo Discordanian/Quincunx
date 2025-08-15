@@ -75,26 +75,15 @@ func _ready() -> void:
 	print("_ready make buckets")
 	make_buckets()
 	# drop_ball_test()
-	print("_ready() drop ball")
+	# print("_ready() drop ball")
 	drop_ball()
 
-func drop_ball_test() -> void:
-	# print("drop ball called")
-	var ball = ball_scene.instantiate()
-	var bally:int = -50
-	
-	var fuzz : float = randf()/2.0 + 0.25
-	var ballx: float = fuzz
-	ball.position = Vector2(ballx, bally)
-	add_child(ball)
-	
-	
 func drop_ball() -> void:
 	# print("drop ball called")
 	var ball = ball_scene.instantiate()
 	var bally:int = -50
 	
-	var fuzz : float = randf()/2.0 - 0.25
+	var fuzz : float = randf()/1.0 - 0.5
 	var ballx: float = midpoint + fuzz
 	ball.position = Vector2(ballx, bally)
 	add_child(ball)
@@ -117,4 +106,5 @@ func _process(delta: float) -> void:
 		if total_delta > seconds_per_ball:
 			total_delta = 0.0
 			ball_count += -1
+			print(ball_count)
 			drop_ball() 
