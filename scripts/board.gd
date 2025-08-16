@@ -66,7 +66,7 @@ func _ready() -> void:
 	
 	# Seed random numbers
 	randomize()
-	
+	$CountDown.text = str(ball_count)
 	add_camera()
 	
 	print("_ready create pin board")
@@ -106,5 +106,6 @@ func _process(delta: float) -> void:
 		if total_delta > seconds_per_ball:
 			total_delta = 0.0
 			ball_count += -1
-			print(ball_count)
+			$CountDown.text = str(ball_count)
+			# print(ball_count)
 			drop_ball() 
