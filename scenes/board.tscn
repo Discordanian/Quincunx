@@ -20,18 +20,19 @@ outline_size = 1
 
 [node name="Board" type="Node2D"]
 script = ExtResource("1_bw3vb")
-num_of_pins_per_row = 17
+num_of_pins_per_row = 10
 num_of_pin_rows = 18
 distance_between_rows = 30
 seconds_per_ball = 1.4
 buckets = 11
+ball_count = 140
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 810.0
-offset_bottom = 1365.0
+offset_right = 720.0
+offset_bottom = 1280.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.941176, 0.941176, 0.941176, 1)
@@ -59,11 +60,11 @@ shape = SubResource("RectangleShape2D_4mug4")
 [node name="CountDown" type="Label" parent="."]
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 198.0
+offset_left = 302.0
 offset_right = 548.0
 offset_bottom = 87.0
 grow_horizontal = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 6
 size_flags_vertical = 0
 text = "200"
 label_settings = SubResource("LabelSettings_nglv8")
