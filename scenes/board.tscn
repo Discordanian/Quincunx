@@ -21,7 +21,7 @@ outline_size = 1
 [node name="Board" type="Node2D"]
 script = ExtResource("1_bw3vb")
 num_of_pins_per_row = 10
-num_of_pin_rows = 18
+num_of_pin_rows = 20
 distance_between_rows = 30
 seconds_per_ball = 1.4
 buckets = 11
