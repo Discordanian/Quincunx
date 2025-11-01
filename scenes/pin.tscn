@@ -3,12 +3,11 @@
 [ext_resource type="Texture2D" uid="uid://yig2ss22t4bq" path="res://Assets/Images/cannon ball.png" id="1_p1640"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gflbs"]
-radius = 4.0
+radius = 5.0990195
 
 [node name="pin" type="StaticBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_gflbs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
