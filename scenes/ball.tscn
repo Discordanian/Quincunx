@@ -9,7 +9,7 @@ rough = true
 bounce = 0.29
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ig7tw"]
-radius = 13.0384
+radius = 15.0
 
 [node name="Ball" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_7s4qf")
@@ -24,3 +24,4 @@ scale = Vector2(0.04, 0.04)
 texture = ExtResource("1_7s4qf")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

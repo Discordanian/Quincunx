@@ -30,10 +30,10 @@ func make_buckets() -> void:
         add_child(seperator)
 
 
-func create_pin_board(game_width: int) -> void:
+func create_pin_board() -> void:
     print("create_pin_board(", game_width, ")")
     # Center the first row pins
-    var distance_between_pins: float = game_width / num_of_pins_per_row
+    var distance_between_pins: float = float(game_width) / float(num_of_pins_per_row)
     print("Distance between pins: ", distance_between_pins)
     var pinx_offset: float = 0
     for row in num_of_pin_rows:
@@ -48,7 +48,7 @@ func create_pin_board(game_width: int) -> void:
         add_child(midpin)
 
         # Start in the middle and work out.  Given that we need half the points
-        var half_pin_count:int = num_of_pins_per_row / 2
+        var half_pin_count:int = int(num_of_pins_per_row / 2)
         for x in num_of_pins_per_row:
             var x_delta: float = (x+1) * distance_between_pins
             var pin_pos_x: float = pinx_offset + x_delta
@@ -70,7 +70,7 @@ func _ready() -> void:
     add_camera()
     
     print("_ready create pin board")
-    create_pin_board(game_width)
+    create_pin_board()
     
     print("_ready make buckets")
     make_buckets()
