@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgs87vomvhcft"]
+[gd_scene format=3 uid="uid://cgs87vomvhcft"]
 
 [ext_resource type="Texture2D" uid="uid://djbw2ybs6bmml" path="res://Assets/Images/RainbowBall.png" id="1_7s4qf"]
 [ext_resource type="Script" uid="uid://dlovppff5p3do" path="res://scripts/ball.gd" id="1_cxlvu"]
@@ -11,15 +11,15 @@ bounce = 0.29
 [sub_resource type="CircleShape2D" id="CircleShape2D_ig7tw"]
 radius = 15.0
 
-[node name="Ball" type="RigidBody2D"]
+[node name="Ball" type="RigidBody2D" unique_id=1549937816]
 physics_material_override = SubResource("PhysicsMaterial_7s4qf")
 gravity_scale = 1.44
 script = ExtResource("1_cxlvu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=781409430]
 shape = SubResource("CircleShape2D_ig7tw")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=376008138]
 scale = Vector2(0.04, 0.04)
 texture = ExtResource("1_7s4qf")
 

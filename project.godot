@@ -14,7 +14,7 @@ config/name="Quincunx"
 config/description="A Galton Board simulation"
 config/version="0.1"
 run/main_scene="uid://das3imuq6ndw4"
-config/features=PackedStringArray("4.5", "GL Compatibility")
+config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/image="uid://c03kl021x5eqy"
 config/icon="res://icon.svg"
 
