@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://das3imuq6ndw4"]
+[gd_scene format=3 uid="uid://das3imuq6ndw4"]
 
 [ext_resource type="Script" uid="uid://cjinnhnq2m1to" path="res://scripts/splash.gd" id="1_5svwm"]
 [ext_resource type="Texture2D" uid="uid://c03kl021x5eqy" path="res://Assets/Images/Tangential Cold Studios Transparent Background.png" id="1_86pdq"]
@@ -15,7 +15,7 @@ default_font_size = 100
 default_font = ExtResource("4_31efs")
 default_font_size = 80
 
-[node name="Splash" type="Control"]
+[node name="Splash" type="Control" unique_id=655806391]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,7 +24,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5svwm")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2056798527]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,7 +32,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=813295063]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,12 +41,12 @@ grow_horizontal = 2
 grow_vertical = 2
 stretch_mode = 4
 
-[node name="TangentialColdStudiosTransparentBackground" type="Sprite2D" parent="TextureRect"]
+[node name="TangentialColdStudiosTransparentBackground" type="Sprite2D" parent="TextureRect" unique_id=1854036782]
 position = Vector2(358, 211.5)
 scale = Vector2(0.75, 0.758929)
 texture = ExtResource("1_86pdq")
 
-[node name="Title" type="Label" parent="."]
+[node name="Title" type="Label" parent="." unique_id=328384284]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -64,7 +64,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_10vqf")
 text = "Q u i n c u n x"
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=480926845]
 material = SubResource("CanvasItemMaterial_c8158")
 layout_mode = 1
 anchors_preset = 7
