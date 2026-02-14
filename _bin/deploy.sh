@@ -1,4 +1,5 @@
 #!/bin/sh
+set -x
 
 BUILD_DIR="../build"
 REMOTE_PATH="tangentialcold.com:tangentialcold.com/Quincunx"
